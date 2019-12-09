@@ -7,7 +7,7 @@ import (
   "strings"
   "io/ioutil"
   "encoding/json"
-  "encoding/base64"
+  "encoding/base32"
 
   "github.com/fsnotify/fsnotify"
 )
@@ -59,7 +59,7 @@ func buildCerts() {
   json.Unmarshal(f, &acme)
   for _, cert := range acme.Certificates {
     // Decode
-    decoded, err := base64.StdEncoding.DecodeString(cert.Certificate)
+    decoded, err := base32.StdEncoding.DecodeString(cert.Certificate)
     if err != nil {
       fmt.Println("Unable to decode certificate", cert.Domain.Main)
       continue
@@ -83,7 +83,7 @@ func buildCerts() {
     }
 
     // Decode key
-    decoded, err = base64.StdEncoding.DecodeString(cert.Key)
+    decoded, err = base32.StdEncoding.DecodeString(cert.Key)
     if err != nil {
       fmt.Println("Unable to decode certificate", cert.Domain.Main)
       continue
