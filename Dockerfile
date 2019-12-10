@@ -11,7 +11,7 @@ RUN apk add --no-cache git && \
 
 # Copy & build
 ADD . /app/
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix nocgo -o /traefik-certs_arm .
+RUN CGO_ENABLED=0 GOOS=linux GOARCH=arm GOARM=7 go build -a -installsuffix nocgo -o /traefik-certs_arm .
 
 # Copy into scratch container
 FROM scratch
