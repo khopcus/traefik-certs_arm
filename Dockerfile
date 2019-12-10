@@ -1,4 +1,4 @@
-FROM golang:1.10-alpine as builder
+FROM golang:1.13-alpine as builder
 
 # Setup
 RUN mkdir /app
@@ -11,7 +11,7 @@ RUN apk add --no-cache git && \
 
 # Copy & build
 ADD . /app/
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=arm GOARM=6 go build -a -installsuffix nocgo -o /traefik-certs_arm .
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix nocgo -o /traefik-certs_arm .
 
 # Copy into scratch container
 FROM scratch
