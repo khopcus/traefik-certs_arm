@@ -21,10 +21,7 @@ The environment variables are:
 
 The program with watch acme.json for changes and generate certficates and certfiacte chains with the names `domain.crt` and `domain.chain.crt` repsectively.
 
-## Copyright
+## Modified
 
-2018 Thom Seddon
+2019 khopcus [thomseddon/traefik-certs](https://github.com/thomseddon/traefik-certs)
 
-## License
-
-[MIT](https://github.com/thomseddon/traefik-certs/blob/master/LICENSE.md)
